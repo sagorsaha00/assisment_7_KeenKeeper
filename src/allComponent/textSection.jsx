@@ -1,8 +1,14 @@
+import { useContext } from "react";
+import { ThemeContext } from "../apiContext";
 export default function HeroSection() {
+  const { user } = useContext(ThemeContext);
+  const ontrack =  user.map((item) => item.status).filter((status) => status === "on-track");
+  const attention =  user.map((item) => item.status).filter((status) => status === "almost due");
+  const interactions =  user.map((item) => item.status).filter((status) => status === "overdue");
   return (
     <section className="bg-[#f5f5f5] py-8 md:py-18">
       <div className="mx-auto w-[90%] ">
-        <div className="mx-auto    text-center">
+        <div className="mx-auto text-center">
           <h1 className="text-3xl font-bold text-slate-800 sm:text-5xl md:text-6xl">
             Friends to keep close in your life
           </h1>
@@ -23,22 +29,26 @@ export default function HeroSection() {
 
         <div className=" cursor-pointer mt-6 grid grid-cols-2 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           <div className="rounded-2xl bg-white px-6 py-12 text-center shadow-sm">
-            <h3 className="text-4xl font-bold text-[#235847]">10</h3>
-            <p className="mt-4 text-xl font-bold text-slate-500">Total Friends</p>
+            <h3 className="text-4xl font-bold text-[#235847]">{user.length}</h3>
+            <p className="mt-4 text-xl font-bold text-slate-500">
+              Total Friends
+            </p>
           </div>
 
           <div className=" cursor-pointer  rounded-2xl bg-white px-6 py-12 text-center shadow-sm">
-            <h3 className="text-4xl font-bold text-[#235847]">3</h3>
+            <h3 className="text-4xl font-bold text-[#235847]">{ontrack.length}</h3>
             <p className="mt-4  text-xl font-bold text-slate-500">On Track</p>
           </div>
 
           <div className=" cursor-pointer rounded-2xl bg-white px-6 py-12 text-center shadow-sm">
-            <h3 className="text-4xl font-bold text-[#235847]">6</h3>
-            <p className="mt-4 font-bold text-xl text-slate-500">Need Attention</p>
+            <h3 className="text-4xl font-bold text-[#235847]">{attention.length}</h3>
+            <p className="mt-4 font-bold text-xl text-slate-500">
+              Need Attention
+            </p>
           </div>
 
           <div className=" cursor-pointer rounded-2xl bg-white px-6 py-12 text-center shadow-sm">
-            <h3 className="text-4xl font-bold text-[#235847]">12</h3>
+            <h3 className="text-4xl font-bold text-[#235847]">{interactions.length}</h3>
             <p className="mt-4 font-bold text-xl text-slate-500">
               Interactions This Month
             </p>
