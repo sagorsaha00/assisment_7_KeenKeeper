@@ -51,7 +51,10 @@ export default function Header() {
               <span>Timeline</span>
             </button>
 
-            <button onClick={() => navigate('/paichart')} className="cursor-pointer flex items-center gap-2 text-gray-500 hover:text-gray-800 transition">
+            <button
+              onClick={() => navigate("/paichart")}
+              className="cursor-pointer flex items-center gap-2 text-gray-500 hover:text-gray-800 transition"
+            >
               <FaChartLine />
               <span>Stats</span>
             </button>
@@ -75,12 +78,18 @@ export default function Header() {
             <span className="font-medium">Home</span>
           </button>
 
-          <button className="cursor-pointer flex items-center justify-center gap-2 text-gray-700 bg-white border px-5 py-3 rounded-md hover:bg-gray-100 transition">
+          <button
+            onClick={() => navigate("/timeline")}
+            className="cursor-pointer flex items-center justify-center gap-2 text-gray-700 bg-white border px-5 py-3 rounded-md hover:bg-gray-100 transition"
+          >
             <MdOutlineWatchLater />
             <span>Timeline</span>
           </button>
 
-          <button className="cursor-pointer flex items-center justify-center gap-2 text-gray-700 bg-white border px-5 py-3 rounded-md hover:bg-gray-100 transition">
+          <button
+            onClick={() => navigate("/paichart")}
+            className="cursor-pointer flex items-center justify-center gap-2 text-gray-700 bg-white border px-5 py-3 rounded-md hover:bg-gray-100 transition"
+          >
             <FaChartLine />
             <span>Stats</span>
           </button>
