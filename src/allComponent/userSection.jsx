@@ -1,25 +1,44 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../apiContext";
 export default function UserSection() {
   const { user, setUser } = useContext(ThemeContext);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/user.json");
+      const data = await response.json();
+      setUser(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    fetch("/user.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-      });
-  }, [setUser]);
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500">
+         
+        </div>
+      </div>
+    );
+  }
+
   const getStatusClass = (status) => {
     if (status === "overdue") {
       return "bg-red-400 text-white";
     }
-
     if (status === "almost due") {
       return "bg-amber-400 text-white";
     }
-
     return "bg-[#235847] text-white";
   };
   const handleRedirectDataUser = (user) => {
