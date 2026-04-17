@@ -24,6 +24,8 @@ KeenKeeper is a modern and responsive relationship tracking web application that
 - ❌ **Custom 404 Page**  
   Handles unknown routes with a clean error page.
 
+  add loading
+
 ---
 
 ## 🛠️ Technologies Used
